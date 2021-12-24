@@ -23,25 +23,32 @@ function generatePassword() {
 
   // Allows user to select which characters to include in password
   var useLower = window.confirm("Include lowercase?");
+  if (useLower) {
+    window.alert("Password will include lowercase letters.");
+    selectedChar += charTypes.lowerCase;
+  }
+
   var useUpper = window.confirm("Include uppercase?");
+  if (useUpper) {
+    window.alert("Password will include uppercase letters.")
+    selectedChar += charTypes.upperCase;
+  }
+
   var useNum = window.confirm("Include numbers?");
+  if (useNum) {
+    selectedChar += charTypes.numbers;
+    window.alert("Password will include numbers.")
+  }  
+
   var useSpecial = window.confirm("Include special characters?");
+  if (useSpecial) {
+    window.alert("Password will include special characters.")
+    selectedChar += charTypes.special;
+  }
   
   if (!useLower && !useUpper && !useNum && !useSpecial) {
     window.alert("You must select at least one character type! Please try again.");
-  }
-  if (useLower) {
-    selectedChar += charTypes.lowerCase
-  }
-  if (useUpper) {
-    selectedChar += charTypes.upperCase;
-  }
-  if (useNum) {
-    selectedChar += charTypes.numbers;
-  
-  }  
-  if (useSpecial) {
-    selectedChar += charTypes.special;
+    return;
   }
   
   // Creates password with the user's chosen criteria
