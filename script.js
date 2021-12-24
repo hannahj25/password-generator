@@ -24,7 +24,7 @@ function generatePassword() {
   var useNum = window.confirm("Include numbers?");
   var useSpecial = window.confirm("Include special characters?");
   
-  if (!useLower && !useUpper && !useNum) {
+  if (!useLower && !useUpper && !useNum && !useSpecial) {
     window.alert("You must select at least one character type! Please try again.");
   }
   if (useLower) {
