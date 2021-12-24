@@ -21,7 +21,7 @@ function generatePassword() {
     length = window.prompt("Password length must be between 8-128 characters.");
   }
 
-  // Allows user to select which characters to include in password
+  // Allows user to select which character types to include in password
   var useLower = window.confirm("Include lowercase?");
   if (useLower) {
     window.alert("Password will include lowercase letters.");
