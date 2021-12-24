@@ -1,13 +1,16 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
-var lowerCase = "abcdefghijklmnopqrstuvwxyz";
-var upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-var numbers = "0123456789";
+
+const charTypes =  {
+lowerCase: "abcdefghijklmnopqrstuvwxyz",
+upperCase: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+numbers: "0123456789",
+}
 
 
 // Write password to the #password input
-function writePassword() {
-  var includedChar = "";
+function generatePassword() {
+  var selectedChar = "";
 
   var length = window.prompt("Please enter desired password length (from 8 to 128 characters).");
   while (length < 8 || length > 128) {
@@ -22,28 +25,31 @@ function writePassword() {
     window.alert("You must select at least one character type! Please try again.");
   }
   if (useLower) {
-    includedChar = includedChar.concat(lowerCase);
+    selectedChar += charTypes.lowerCase
   }
   if (useUpper) {
-    includedChar = includedChar.concat(upperCase);
+    selectedChar += charTypes.upperCase;
   }
   if (useNum) {
-    includedChar = includedChar.concat(numbers);
+    selectedChar += charTypes.numbers;
+
   }
 
-  var passwordText = document.querySelector("#password");
-  var password = generatePassword(); {
-    for (i = 0; i < length; i++) {
-      passwordText = [Math.floor(Math.random() * includedChar.length)];
-    }
-  }
   
+  var password = "";
+  for (i = 0; i < length; i++) {
+    password += selectedChar[Math.floor(Math.random() * selectedChar.length)]
+  }
 
-
-
-  passwordText.value = password;
-
+  return password;
+  
 }
 
+console.log(generatePassword());
+
+
+
+
+
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+generateBtn.addEventListener("click", generatePassword);
