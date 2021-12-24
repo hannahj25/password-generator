@@ -5,11 +5,13 @@ const charTypes =  {
 lowerCase: "abcdefghijklmnopqrstuvwxyz",
 upperCase: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
 numbers: "0123456789",
+special: "!#$%&'()*+,-./:;<=>?@[]^_`{|}~",
 }
 
 
 // Write password to the #password input
 function generatePassword() {
+  var passwordText = document.querySelector("#password");
   var selectedChar = "";
 
   var length = window.prompt("Please enter desired password length (from 8 to 128 characters).");
@@ -20,6 +22,7 @@ function generatePassword() {
   var useLower = window.confirm("Include lowercase?");
   var useUpper = window.confirm("Include uppercase?");
   var useNum = window.confirm("Include numbers?");
+  var useSpecial = window.confirm("Include special characters?");
   
   if (!useLower && !useUpper && !useNum) {
     window.alert("You must select at least one character type! Please try again.");
@@ -32,20 +35,22 @@ function generatePassword() {
   }
   if (useNum) {
     selectedChar += charTypes.numbers;
-
-  }
-
   
+  }  
+  if (useSpecial) {
+    selectedChar += charTypes.special;
+  }
+  
+
   var password = "";
   for (i = 0; i < length; i++) {
     password += selectedChar[Math.floor(Math.random() * selectedChar.length)]
   }
 
-  return password;
-  
+  passwordText.textContent = password;
+
 }
 
-console.log(generatePassword());
 
 
 
